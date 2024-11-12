@@ -12,7 +12,12 @@ import { RichTextEditor } from './rich-text-editor';
 import { Loader2 } from 'lucide-react';
 
 interface PostFormProps {
-  initialData?: any;
+  initialData?: {
+    title: string;
+    content: string;
+    slug: string;
+    // ... outros campos
+  };
   isEditing?: boolean;
 }
 
@@ -164,19 +169,16 @@ export function PostForm({ initialData, isEditing }: PostFormProps) {
           <div className="space-y-2">
             <Label htmlFor="content">Conteúdo</Label>
             <RichTextEditor
-              content={generatedContent}
-              onChange={(content) => {
-                const textarea = document.getElementById('content') as HTMLTextAreaElement;
-                if (textarea) {
-                  textarea.value = content;
-                }
+              content={initialData?.content || ''}
+              onChange={(newContent) => {
+                // Lógica para atualizar o conteúdo
               }}
             />
             <Input
               id="content"
               name="content"
               type="hidden"
-              defaultValue={generatedContent}
+              defaultValue={initialData?.content || ''}
             />
           </div>
 

@@ -49,10 +49,17 @@ export default async function AdminPage() {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Gerenciar Posts</h1>
-        <Link href="/blog/admin/new">
-          <Button>Novo Post</Button>
-        </Link>
+        <h1 className="text-4xl font-bold">Gerenciar Blog</h1>
+        <div className="flex gap-4">
+          <Link href="/blog/admin/authors">
+            <Button variant="outline">
+              Gerenciar Autores
+            </Button>
+          </Link>
+          <Link href="/blog/admin/new">
+            <Button>Novo Post</Button>
+          </Link>
+        </div>
       </div>
       
       {/* Seção de Posts Publicados */}

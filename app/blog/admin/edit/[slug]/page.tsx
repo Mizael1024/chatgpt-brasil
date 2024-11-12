@@ -36,7 +36,8 @@ export default async function EditPostPage({ params }: EditPostPageProps) {
       *,
       users (
         email
-      )
+      ),
+      content
     `)
     .eq('slug', resolvedParams.slug)
     .single();
