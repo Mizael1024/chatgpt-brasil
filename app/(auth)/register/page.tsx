@@ -37,7 +37,7 @@ export default function RegisterPage() {
     <div className="flex h-[calc(100vh-theme(spacing.16))] items-center justify-center py-10">
       <div className="w-full max-w-sm space-y-6">
         <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Registrar</h1>
+          <h1 className="text-3xl font-bold">Criar conta</h1>
           <p className="text-gray-500 dark:text-gray-400">
             Insira suas informações para criar uma conta
           </p>

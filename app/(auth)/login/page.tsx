@@ -64,7 +64,7 @@ export default function LoginPage() {
         <div className="text-center text-sm">
           Não tem uma conta?{' '}
           <Link className="underline" href="/register">
-            Cadastre-se
+            Criar conta
           </Link>
         </div>
       </div>

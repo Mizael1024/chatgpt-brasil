@@ -6,9 +6,9 @@ import { ThemeProvider } from '@/components/custom/theme-provider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chat.vercel.ai'),
-  title: 'ChatGPT Brasil',
-  description: 'Descubra o poder do ChatGPT Brasil! Transforme sua experiência com inteligência artificial: crie textos incríveis, traduza idiomas e muito mais. .',
+  metadataBase: new URL('https://chatgptoficial.com'),
+  title: 'ChatGPT',
+  description: 'Descubra o poder do ChatGPT em Português! Transforme sua experiência com inteligência artificial: crie textos incríveis, traduza idiomas e muito mais. .',
 };
 
 export const viewport = {

@@ -1,17 +1,19 @@
 'use client';
 
+import { Message, CreateMessage } from 'ai';
 import { motion } from 'framer-motion';
 import { FileText, HeartHandshake, Sparkles, Image, PenLine } from 'lucide-react';
-import { Message, CreateMessage } from 'ai';
 import { useRouter } from 'next/navigation';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { Vote } from '@/lib/supabase/types';
-import useSWR from 'swr';
-import { fetcher } from '@/lib/utils';
-import { UISuggestion } from '@/lib/editor/suggestions';
-import { useState } from 'react';
-import { Suggestion as PreviewSuggestion } from './suggestion';
+import * as React from 'react';
 import { toast } from 'sonner';
+import useSWR from 'swr';
+
+import { useIsMobile } from '@/hooks/use-mobile';
+import { UISuggestion } from '@/lib/editor/suggestions';
+import { Vote } from '@/lib/supabase/types';
+import { fetcher } from '@/lib/utils';
+
+import { Suggestion as PreviewSuggestion } from './suggestion';
 
 interface OverviewProps {
   id: string;
@@ -29,29 +31,29 @@ interface OverviewProps {
 export const Overview = ({ id, append, modelId = 'gpt-4', onApply }: OverviewProps) => {
   const router = useRouter();
   const isMobile = useIsMobile();
-  const [selectedSuggestion, setSelectedSuggestion] = useState<UISuggestion | null>(null);
+  const [selectedSuggestion, setSelectedSuggestion] = React.useState<UISuggestion | null>(null);
   
   const { data: votes } = useSWR<Vote[]>(`/api/vote?chatId=${id}`, fetcher);
 
   const buttons = [
     { 
       text: 'Resumir Texto', 
-      icon: <FileText className="w-5 h-5 text-blue-500" />, 
+      icon: <FileText className="size-5 text-blue-500" />, 
       action: 'Gostaria de resumir um texto.' 
     },
     { 
       text: 'Aconselhar', 
-      icon: <HeartHandshake className="w-5 h-5 text-pink-500" />, 
+      icon: <HeartHandshake className="size-5 text-pink-500" />, 
       action: 'Pode me dar um conselho?' 
     },
     { 
       text: 'Surpreenda-me', 
-      icon: <Sparkles className="w-5 h-5 text-purple-500" />, 
+      icon: <Sparkles className="size-5 text-purple-500" />, 
       action: 'Me surpreenda com algo interessante e inesperado!' 
     },
     { 
       text: 'Ajudar a escrever', 
-      icon: <PenLine className="w-5 h-5 text-orange-500" />, 
+      icon: <PenLine className="size-5 text-orange-500" />, 
       action: 'Me ajude a escrever algo!' 
     }
   ];

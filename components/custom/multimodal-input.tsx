@@ -100,8 +100,6 @@ export function MultimodalInput({
     }
   }, []);
 
-  console.log('🏠 Cidade atual:', userCity);
-
   const suggestedActions = [
     {
       title: 'Como está o clima',
