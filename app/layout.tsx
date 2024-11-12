@@ -1,18 +1,43 @@
 import { Metadata } from 'next';
 import { Toaster } from 'sonner';
 
-import { ThemeProvider } from '@/components/custom/theme-provider';
+import { ThemeProvider } from '@/components/theme-provider';
 
 import './globals.css';
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://chatgptoficial.com'),
-  title: 'ChatGPT',
-  description: 'Descubra o poder do ChatGPT em Português! Transforme sua experiência com inteligência artificial: crie textos incríveis, traduza idiomas e muito mais. .',
-};
+// Definir URL base do site a partir da variável de ambiente
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://chatgptoficial.com';
 
-export const viewport = {
-  maximumScale: 1, // Disable auto-zoom on mobile Safari
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'ChatGPT',
+    template: '%s | ChatGPT'
+  },
+  description: 'Descubra o poder do ChatGPT em Português! Transforme sua experiência com inteligência artificial: crie textos incríveis, traduza idiomas e muito mais.',
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: siteUrl,
+    siteName: 'ChatGPT',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+      }
+    ]
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 const LIGHT_THEME_COLOR = 'hsl(0 0% 100%)';
@@ -37,18 +62,11 @@ const THEME_COLOR_SCRIPT = `\
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      // `next-themes` injects an extra classname to the body element to avoid
-      // visual flicker before hydration. Hence the `suppressHydrationWarning`
-      // prop is necessary to avoid the React hydration mismatch warning.
-      // https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
-      suppressHydrationWarning
-    >
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -63,10 +81,8 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <AuthProvider> */}
           <Toaster position="top-center" />
           {children}
-          {/* </AuthProvider> */}
         </ThemeProvider>
       </body>
     </html>
