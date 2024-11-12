@@ -14,7 +14,7 @@ export const Suggestion = ({
   onApply,
 }: {
   suggestion: UISuggestion;
-  onApply: () => void;
+  onApply: VoidFunction;
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { width: windowWidth } = useWindowSize();
