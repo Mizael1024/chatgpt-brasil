@@ -42,7 +42,7 @@ export const Overview = ({ id, append, modelId = 'gpt-4', onApply }: OverviewPro
     { 
       text: 'Aconselhar', 
       icon: <HeartHandshake className="w-5 h-5 text-pink-500" />, 
-      action: 'Como posso te aconselhar hoje?' 
+      action: 'Pode me dar um conselho?' 
     },
     { 
       text: 'Surpreenda-me', 
@@ -50,14 +50,9 @@ export const Overview = ({ id, append, modelId = 'gpt-4', onApply }: OverviewPro
       action: 'Me surpreenda com algo interessante e inesperado!' 
     },
     { 
-      text: 'Analisar Imagens', 
-      icon: <Image className="w-5 h-5 text-green-500" />, 
-      action: 'Por favor, envie a imagem que você gostaria que eu analisasse.' 
-    },
-    { 
       text: 'Ajudar a escrever', 
       icon: <PenLine className="w-5 h-5 text-orange-500" />, 
-      action: 'Como posso te ajudar com a escrita hoje?' 
+      action: 'Me ajude a escrever algo!' 
     }
   ];
 
