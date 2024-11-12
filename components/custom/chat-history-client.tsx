@@ -28,7 +28,7 @@ export function ChatHistoryClient({
   if (!chats?.length) {
     return (
       <div className="text-zinc-500 w-full flex flex-row justify-center items-center text-sm gap-2">
-        <div>Your conversations will appear here once you start chatting!</div>
+        <div>Sua conversa aparecerá aqui assim que você começar a conversar!</div>
       </div>
     );
   }

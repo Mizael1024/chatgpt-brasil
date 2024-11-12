@@ -24,7 +24,7 @@ export default function RegisterPage() {
       const password = formData.get('password') as string;
 
       await signUp(email, password);
-      toast.success('Check your email to confirm your account');
+      toast.success('Verifique seu e-mail para confirmar sua conta');
       router.push('/login');
     } catch (error: any) {
       toast.error(error.message);
@@ -37,34 +37,34 @@ export default function RegisterPage() {
     <div className="flex h-[calc(100vh-theme(spacing.16))] items-center justify-center py-10">
       <div className="w-full max-w-sm space-y-6">
         <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Register</h1>
+          <h1 className="text-3xl font-bold">Registrar</h1>
           <p className="text-gray-500 dark:text-gray-400">
-            Enter your information to create an account
+            Insira suas informações para criar uma conta
           </p>
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">E-mail</Label>
             <Input
               id="email"
               name="email"
-              placeholder="m@example.com"
+              placeholder="m@exemplo.com"
               required
               type="email"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Senha</Label>
             <Input id="password" name="password" required type="password" />
           </div>
           <Button className="w-full" disabled={isLoading}>
-            {isLoading ? 'Loading...' : 'Register'}
+            {isLoading ? 'Carregando...' : 'Registrar'}
           </Button>
         </form>
         <div className="text-center text-sm">
-          Already have an account?{' '}
+          Já tem uma conta?{' '}
           <Link className="underline" href="/login">
-            Login
+            Entrar
           </Link>
         </div>
       </div>

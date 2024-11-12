@@ -50,7 +50,7 @@ export function MessageActions({
               <CopyIcon />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Copy</TooltipContent>
+          <TooltipContent>Copiar</TooltipContent>
         </Tooltip>
 
         <Tooltip>
@@ -72,7 +72,7 @@ export function MessageActions({
                 });
 
                 toast.promise(upvote, {
-                  loading: 'Upvoting Response...',
+                  loading: 'Avaliando resposta...',
                   success: () => {
                     mutate<Array<Vote>>(
                       `/api/vote?chatId=${chatId}`,
@@ -96,16 +96,16 @@ export function MessageActions({
                       { revalidate: false }
                     );
 
-                    return 'Upvoted Response!';
+                    return 'Resposta avaliada!';
                   },
-                  error: 'Failed to upvote response.',
+                  error: 'Falha ao avaliar resposta.',
                 });
               }}
             >
               <ThumbUpIcon />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Upvote Response</TooltipContent>
+          <TooltipContent>Avaliar resposta</TooltipContent>
         </Tooltip>
 
         <Tooltip>
@@ -127,7 +127,7 @@ export function MessageActions({
                 });
 
                 toast.promise(downvote, {
-                  loading: 'Downvoting Response...',
+                  loading: 'Avaliando resposta...',
                   success: () => {
                     mutate<Array<Vote>>(
                       `/api/vote?chatId=${chatId}`,
@@ -151,16 +151,16 @@ export function MessageActions({
                       { revalidate: false }
                     );
 
-                    return 'Downvoted Response!';
+                    return 'Resposta avaliada!';
                   },
-                  error: 'Failed to downvote response.',
+                  error: 'Falha ao avaliar resposta.',
                 });
               }}
             >
               <ThumbDownIcon />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Downvote Response</TooltipContent>
+          <TooltipContent>Avaliar resposta</TooltipContent>
         </Tooltip>
       </div>
     </TooltipProvider>

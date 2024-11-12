@@ -83,7 +83,7 @@ const Tool = ({
         append({
           role: 'user',
           content:
-            'Please add final polish and check for grammar, add section titles for better structure, and ensure everything reads smoothly.',
+            'Por favor, adicione a finalização e verifique a gramática, adicione títulos de seção para melhorar a estrutura e garantir que tudo leia suavemente.',
         });
 
         setSelectedTool(null);
@@ -91,7 +91,7 @@ const Tool = ({
         append({
           role: 'user',
           content:
-            'Please add suggestions you have that could improve the writing.',
+            'Por favor, adicione sugestões que você tem que podem melhorar a escrita.',
         });
 
         setSelectedTool(null);
@@ -230,7 +230,7 @@ const ReadingLevelSelector = ({
                 if (currentLevel !== 2 && hasUserSelectedLevel) {
                   append({
                     role: 'user',
-                    content: `Please adjust the reading level to ${LEVELS[currentLevel]} level.`,
+                    content: `Por favor, ajuste o nível de leitura para ${LEVELS[currentLevel]}.`,
                   });
 
                   setSelectedTool(null);
@@ -293,7 +293,7 @@ export const Tools = ({
 
             <Tool
               type="request-suggestions"
-              description="Request suggestions"
+              description="Solicitar sugestões"
               icon={<MessageIcon />}
               selectedTool={selectedTool}
               setSelectedTool={setSelectedTool}
@@ -306,7 +306,7 @@ export const Tools = ({
 
       <Tool
         type="final-polish"
-        description="Add final polish"
+        description="Adicionar finalização"
         icon={<PenIcon />}
         selectedTool={selectedTool}
         setSelectedTool={setSelectedTool}

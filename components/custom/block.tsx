@@ -615,7 +615,7 @@ export function Block({
                   <CopyIcon size={18} />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Copy to clipboard</TooltipContent>
+              <TooltipContent>Copiar para a área de transferência</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -632,7 +632,7 @@ export function Block({
                   {documents?.length &&
                   currentVersionIndex === documents.length - 1 ? (
                     <span className=" absolute -bottom-[21px] text-[9px] text-muted-foreground ">
-                      Latest
+                      Última
                     </span>
                   ) : (
                     <span className=" absolute -bottom-[21px] text-[9px] text-muted-foreground ">
@@ -650,7 +650,7 @@ export function Block({
                     ? `${currentVersionIndex} / ${documents.length}`
                     : ''}
                 </span>{' '}
-                <p>View Previous version</p>
+                <p>Visualizar versão anterior</p>
               </TooltipContent>
             </Tooltip>
             <Tooltip>
@@ -666,7 +666,7 @@ export function Block({
                   <RedoIcon size={18} />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>View Next version</TooltipContent>
+              <TooltipContent>Visualizar versão posterior</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -706,7 +706,7 @@ export function Block({
                 <span className="text-[10px] text-muted-foreground">
                   {mode === 'diff' ? 'diff mode' : 'edit mode'}
                 </span>{' '}
-                <p>Toggle mode to {mode === 'diff' ? 'edit' : 'diff'}</p>
+                <p>Alterar modo para {mode === 'diff' ? 'edit' : 'diff'}</p>
               </TooltipContent>
             </Tooltip>
           </div>

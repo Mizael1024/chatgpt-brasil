@@ -179,7 +179,7 @@ Common issues and solutions:
   - Clear `.next` folder: `rm -rf .next`
   - Clean install dependencies: `pnpm clean-install`
 
-For more help, open an issue.
+For more help, opan issue.
 
 ## Deploy with Vercel
 

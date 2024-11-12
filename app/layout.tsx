@@ -7,8 +7,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://chat.vercel.ai'),
-  title: 'Next.js Chatbot Template',
-  description: 'Next.js chatbot template using the AI SDK.',
+  title: 'ChatGPT Brasil',
+  description: 'Descubra o poder do ChatGPT Brasil! Transforme sua experiência com inteligência artificial: crie textos incríveis, traduza idiomas e muito mais. .',
 };
 
 export const viewport = {

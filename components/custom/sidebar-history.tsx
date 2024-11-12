@@ -93,7 +93,7 @@ const ChatItem = ({
   <SidebarMenuItem>
     <SidebarMenuButton asChild isActive={isActive}>
       <Link href={`/chat/${chat.id}`} onClick={() => setOpenMobile(false)}>
-        <span>{chat.title || 'New Chat'}</span>
+        <span>{chat.title || 'Novo Chat'}</span>
       </Link>
     </SidebarMenuButton>
     <DropdownMenu modal={true}>
@@ -103,7 +103,7 @@ const ChatItem = ({
           showOnHover={!isActive}
         >
           <MoreHorizontalIcon />
-          <span className="sr-only">More</span>
+          <span className="sr-only">Mais</span>
         </SidebarMenuAction>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="bottom" align="end">
@@ -112,7 +112,7 @@ const ChatItem = ({
           onSelect={() => onDelete(chat.id)}
         >
           <TrashIcon />
-          <span>Delete</span>
+          <span>Excluir</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -146,16 +146,16 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
     });
 
     toast.promise(deletePromise, {
-      loading: 'Deleting chat...',
+      loading: 'Excluindo chat...',
       success: () => {
         mutate((history) => {
           if (history) {
             return history.filter((h) => h.id !== id);
           }
         });
-        return 'Chat deleted successfully';
+        return 'Chat excluído com sucesso';
       },
-      error: 'Failed to delete chat',
+      error: 'Falha ao excluir chat',
     });
 
     setShowDeleteDialog(false);
@@ -170,7 +170,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
       <SidebarGroup>
         <SidebarGroupContent>
           <div className="text-zinc-500 w-full flex flex-row justify-center items-center text-sm gap-2">
-            <div>Login to save and revisit previous chats!</div>
+            <div>Faça login para salvar e revisitar chats anteriores!</div>
           </div>
         </SidebarGroupContent>
       </SidebarGroup>
@@ -181,7 +181,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
     return (
       <SidebarGroup>
         <div className="px-2 py-1 text-xs text-sidebar-foreground/50">
-          Today
+          Hoje
         </div>
         <SidebarGroupContent>
           <div className="flex flex-col">
@@ -212,7 +212,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
         <SidebarGroupContent>
           <div className="text-zinc-500 w-full flex flex-row justify-center items-center text-sm gap-2">
             <div>
-              Your conversations will appear here once you start chatting!
+              Suas conversas aparecerão aqui quando você começar a conversar!
             </div>
           </div>
         </SidebarGroupContent>
@@ -267,7 +267,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                     {groupedChats.today.length > 0 && (
                       <>
                         <div className="px-2 py-1 text-xs text-sidebar-foreground/50">
-                          Today
+                          Hoje
                         </div>
                         {groupedChats.today.map((chat) => (
                           <ChatItem
@@ -287,7 +287,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                     {groupedChats.yesterday.length > 0 && (
                       <>
                         <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6">
-                          Yesterday
+                          Ontem
                         </div>
                         {groupedChats.yesterday.map((chat) => (
                           <ChatItem
@@ -307,7 +307,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                     {groupedChats.lastWeek.length > 0 && (
                       <>
                         <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6">
-                          Last 7 days
+                          Últimos 7 dias
                         </div>
                         {groupedChats.lastWeek.map((chat) => (
                           <ChatItem
@@ -327,7 +327,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                     {groupedChats.lastMonth.length > 0 && (
                       <>
                         <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6">
-                          Last 30 days
+                          Últimos 30 dias
                         </div>
                         {groupedChats.lastMonth.map((chat) => (
                           <ChatItem
@@ -347,7 +347,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                     {groupedChats.older.length > 0 && (
                       <>
                         <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6">
-                          Older
+                          Mais antigos
                         </div>
                         {groupedChats.older.map((chat) => (
                           <ChatItem
@@ -372,19 +372,19 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>Você tem certeza absoluta?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your
-              chat and remove it from our servers.
+              Esta ação não pode ser desfeita. Isso excluirá permanentemente seu
+              chat e o removerá de nossos servidores.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground"
               onClick={handleDelete}
             >
-              Delete chat
+              Excluir chat
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

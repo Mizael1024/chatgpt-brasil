@@ -37,34 +37,34 @@ export default function LoginPage() {
     <div className="flex h-[calc(100vh-theme(spacing.16))] items-center justify-center py-10">
       <div className="w-full max-w-sm space-y-6">
         <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Login</h1>
+          <h1 className="text-3xl font-bold">Entrar</h1>
           <p className="text-gray-500 dark:text-gray-400">
-            Enter your email below to login to your account
+            Insira seu e-mail abaixo para acessar sua conta
           </p>
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">E-mail</Label>
             <Input
               id="email"
               name="email"
-              placeholder="m@example.com"
+              placeholder="m@exemplo.com"
               required
               type="email"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Senha</Label>
             <Input id="password" name="password" required type="password" />
           </div>
           <Button className="w-full" disabled={isLoading}>
-            {isLoading ? 'Loading...' : 'Login'}
+            {isLoading ? 'Carregando...' : 'Entrar'}
           </Button>
         </form>
         <div className="text-center text-sm">
-          Don&apos;t have an account?{' '}
+          Não tem uma conta?{' '}
           <Link className="underline" href="/register">
-            Register
+            Cadastre-se
           </Link>
         </div>
       </div>

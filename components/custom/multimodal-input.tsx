@@ -22,19 +22,6 @@ import { PreviewAttachment } from './preview-attachment';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 
-const suggestedActions = [
-  {
-    title: 'What is the weather',
-    label: 'in San Francisco?',
-    action: 'What is the weather in San Francisco?',
-  },
-  {
-    title: 'Help me draft an essay',
-    label: 'about Silicon Valley',
-    action: 'Help me draft a short essay about Silicon Valley',
-  },
-];
-
 export function MultimodalInput({
   chatId,
   input,
@@ -70,8 +57,63 @@ export function MultimodalInput({
   ) => void;
   className?: string;
 }) {
+  const [userCity, setUserCity] = useState('São Paulo');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            try {
+              const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`;
+              const response = await fetch(url);
+              const data = await response.json();
+              
+              if (data.city) {
+                setUserCity(data.city);
+              }
+            } catch (error) {
+              // Silently fallback to IP detection
+            }
+          },
+          async () => {
+            try {
+              const response = await fetch('https://ipapi.co/json/');
+              const data = await response.json();
+              
+              if (data.city) {
+                setUserCity(data.city);
+              }
+            } catch (ipError) {
+              // Silently keep default city
+            }
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+          }
+        );
+      }
+    }
+  }, []);
+
+  console.log('🏠 Cidade atual:', userCity);
+
+  const suggestedActions = [
+    {
+      title: 'Como está o clima',
+      label: `em ${userCity}?`,
+      action: `Como está o clima em ${userCity}?`,
+    },
+    {
+      title: 'Me ajude a escrever uma redação',
+      label: 'sobre o fim da escala 6x1',
+      action: 'Me ajude a escrever uma redação sobre o fim da escala 6x1',
+    },
+  ];
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -162,7 +204,7 @@ export function MultimodalInput({
       }
     } catch (error) {
       console.error('Upload failed:', error);
-      toast.error('Failed to upload file, please try again!');
+      toast.error('Falha ao enviar arquivo, por favor tente novamente!');
     }
   };
 
@@ -186,7 +228,7 @@ export function MultimodalInput({
         ]);
       } catch (error) {
         console.error('Error uploading files:', error);
-        toast.error('Failed to upload one or more files');
+        toast.error('Falha ao enviar um ou mais arquivos, por favor tente novamente!');
       } finally {
         setUploadQueue([]);
       }
@@ -262,7 +304,7 @@ export function MultimodalInput({
 
       <Textarea
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder="Enviar uma mensagem..."
         value={input}
         onChange={handleInput}
         className={cx(
@@ -276,7 +318,7 @@ export function MultimodalInput({
             event.preventDefault();
 
             if (isLoading) {
-              toast.error('Please wait for the model to finish its response!');
+              toast.error('Por favor, aguarde a resposta do modelo!');
             } else {
               submitForm();
             }
